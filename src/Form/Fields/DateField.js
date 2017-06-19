@@ -98,7 +98,8 @@ const parseDate = (value) => {
   const dateParts = value.split('.')
   const date = new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`)
   //console.log('parseDate', value, date);
-  if (date == 'Invalid Date') {
+  const currentDate = new Date()
+  if (date == 'Invalid Date' || date.getTime() > currentDate.getTime()) {
     throw new Error('Дата должна быть в формате дд.мм.гггг')
   }
   return date
