@@ -65,7 +65,7 @@ export default class FileField extends Component{
         className='file-upload-widget'
         title={ title }
         tabIndex={1}
-        onFocus={ this._handleFocus }
+        // onFocus={ this._handleFocus }
         onBlur={ this._handleBlur }
         >
         <TextFieldLabel
