@@ -16,16 +16,16 @@ class OneOf extends Component {
   }
   render() {
     //console.debug('OneOf', this.props, this.state)
-    const { items, keyField, parentName, value } = this.props
+    const { items, keyField, parentName, value, placeholder } = this.props
     const titles = items.map ((item, index) => ({title: item.title, id: index}))
     const { selectedItem } = this.state
     const { properties, required } = items[selectedItem]
-    const keyFieldTitle = items[0].properties[keyField].title
+    const keyFieldTitle = items[selectedItem].properties[keyField].title
     return (
       <div style={{width: '100%'}}>
         <SelectField
           value={selectedItem}
-          title={keyFieldTitle}
+          title={placeholder || keyFieldTitle}
           name={`${parentName}[title]`}
           onChange={this._handleChange.bind(this)}
           items={titles}
@@ -42,7 +42,8 @@ class OneOf extends Component {
 }
 
 OneOf.propTypes = {
-  keyField: PropTypes.string.isRequired
+  keyField: PropTypes.string.isRequired,
+  placeholder: PropTypes.object.isRequired
 }
 
 export default OneOf

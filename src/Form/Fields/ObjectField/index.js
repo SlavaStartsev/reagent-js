@@ -8,7 +8,7 @@ const ObjectField = (props) => {
   const {properties, name, title, direction, value={}, required} = props
   let body
   if ('oneOf' in props) {
-    const {oneOf, keyField} = props
+    const {oneOf, keyField, placeholder} = props
     body = (
       <OneOf
         type='object'
@@ -16,6 +16,7 @@ const ObjectField = (props) => {
         value={value}
         keyField={keyField}
         items={oneOf}
+        placeholder={placeholder}
       />
     )
   } else {
